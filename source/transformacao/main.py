@@ -38,5 +38,6 @@ conn = sqlite3.connect('C:/Users/Robert/projetoscraping/data/quotes.db')
 # Salvar o data framase no banco de dados
 df.to_sql('mercado_livre_items', conn, if_exists='replace', index=False)
 
+# Fechar Conexão com banco de dados
 conn.close()
-print(df.head())
+
