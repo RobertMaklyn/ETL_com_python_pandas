@@ -29,8 +29,8 @@ col2.metric(label='Número de Marcas Unicas', value=num_unique_brands)
 average_price = df['new_price'].mean()
 col3.metric(label='Preço Médio (R$)', value=f'{average_price:.2f}')
 
-# Quais marcas mais enconctradas até a página 10
-st.subheader('marcas mais enconctradas até a página 10')
+# Quais marcas mais encontradas até a página 10
+st.subheader('marcas mais encontradas até a página 10')
 col1, col2 = st.columns([4,2])
 top10_pages_brand = df['brand'].value_counts().sort_values(ascending=False)
 col1.bar_chart(top10_pages_brand)
@@ -39,7 +39,8 @@ col2.write(top10_pages_brand)
 # Preço medio por marca
 st.subheader('Preço medio por marca')
 col1,col2 =st.columns([4,2])
-average_price_brand = df.groupby('brand')['new_price'].mean().sort_values(ascending=False)
+df_non_zero_prices = df[df['new_price'] > 0]
+average_price_brand = df_non_zero_prices.groupby('brand')['new_price'].mean().sort_values(ascending=False)
 col1.bar_chart(average_price_brand)
 col2.write(average_price_brand)
 
@@ -51,3 +52,5 @@ review_brand = zero_reviews.groupby('brand')['review_rating_number'].mean().sort
 col1.bar_chart(review_brand)
 col2.write(review_brand)
 
+# para rodar o streamlit dentro da pasta source
+# streamlit run dashboard/app.py

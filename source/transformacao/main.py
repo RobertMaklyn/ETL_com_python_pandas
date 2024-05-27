@@ -41,3 +41,5 @@ df.to_sql('mercado_livre_items', conn, if_exists='replace', index=False)
 # Fechar Conexão com banco de dados
 conn.close()
 
+# para rodar o pandas dentro da pasta source
+# python transformacao/main.py

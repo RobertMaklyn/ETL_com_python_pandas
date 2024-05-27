@@ -32,3 +32,6 @@ class MercadolivreSpider(scrapy.Spider):
             if next_page:
                 self.page_count += 1
                 yield scrapy.Request(url=next_page, callback=self.parse)
+
+# Para rodar o scrapy dentro da pasta source
+# scrapy crawl mercadolivre -o C:\Users\Robert\projetoscraping\data\data.jsonl             
